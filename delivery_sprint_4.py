@@ -1,6 +1,16 @@
 import sys
 
 
+"""
+25 май 2024, 21:24:27
+114601820	
+A
+Python 3.12.1	
+OK
+-	
+34ms
+4.25Mb
+"""
 def platforms_counter(robots_masses: list, max_weight: int) -> int:
     left: int = 0
     right: int = len(robots_masses) - 1
