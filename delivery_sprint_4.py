@@ -1,42 +1,40 @@
 import sys
 
-
 """
 25 май 2024, 21:24:27
-114601820	
+114601820
 A
-Python 3.12.1	
+Python 3.12.1
 OK
--	
+-
 34ms
 4.25Mb
 """
-def platforms_counter(robots_masses: list, max_weight: int) -> int:
-    left: int = 0
-    right: int = len(robots_masses) - 1
+
+
+def count_platforms(robots_weights: list, max_weight: int) -> int:
+    lightest_module: int = 0
+    heaviest_module: int = len(robots_weights) - 1
     counter: int = 0
 
-    while left <= right:
-        if left == right:
+    while lightest_module <= heaviest_module:
+        if (robots_weights[lightest_module]
+                + robots_weights[heaviest_module] <= max_weight):
             counter += 1
-            break
-        elif (left < right and
-              robots_masses[left] + robots_masses[right] <= max_weight):
+            lightest_module += 1
+            heaviest_module -= 1
+        elif (robots_weights[lightest_module]
+              + robots_weights[heaviest_module] > max_weight):
             counter += 1
-            left += 1
-            right -= 1
-        elif (left < right and
-              robots_masses[left] + robots_masses[right] > max_weight):
-            counter += 1
-            right -= 1
+            heaviest_module -= 1
     return counter
 
 
 def main():
-    robots_masses = [int(i) for i in sys.stdin.readline().strip().split()]
-    robots_masses = sorted(robots_masses)
+    robots_weights = [int(i) for i in sys.stdin.readline().strip().split()]
+    robots_weights = sorted(robots_weights)
     max_weight = int(sys.stdin.readline().strip())
-    print(platforms_counter(robots_masses, max_weight))
+    print(count_platforms(robots_weights, max_weight))
 
 
 if __name__ == '__main__':
