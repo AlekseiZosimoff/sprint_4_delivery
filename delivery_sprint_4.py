@@ -13,6 +13,10 @@ OK
 
 
 def count_platforms(robots_weights: list, max_weight: int) -> int:
+    """
+    Подсчёт минимального количества платформ
+    для перевозки модулей
+    """
     lightest_module: int = 0
     heaviest_module: int = len(robots_weights) - 1
     counter: int = 0
