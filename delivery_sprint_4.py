@@ -24,13 +24,9 @@ def count_platforms(robots_weights: list, max_weight: int) -> int:
     while lightest_module <= heaviest_module:
         if (robots_weights[lightest_module]
                 + robots_weights[heaviest_module] <= max_weight):
-            counter += 1
             lightest_module += 1
-            heaviest_module -= 1
-        elif (robots_weights[lightest_module]
-              + robots_weights[heaviest_module] > max_weight):
-            counter += 1
-            heaviest_module -= 1
+        heaviest_module -= 1
+        counter += 1
     return counter
 
 
